@@ -15,9 +15,12 @@ body {
     justify-content: center;
     background: rgb(66, 63, 63);
 }
-
+.fix {
+    display: none;
+}
 .game-board {
     display: grid;
+    position: absolute;
     grid-template-columns: repeat(3, auto);
     grid-template-rows: repeat(3, auto);
     grid-gap: 8px;
@@ -109,11 +112,19 @@ body {
 
     .game-board {
         grid-gap: 4px;
+        background: transparent;
     }
 
     #button {
         font-size: 18px;
         margin: 22px;
         padding: 6px;
+    }
+    .fix {
+        display: block;
+        position: absolute;
+        background: white;
+        width: 75vw;
+        height: 75vw;
     }
 }
