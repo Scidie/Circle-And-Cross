@@ -4,6 +4,7 @@ let fields = Array.from(document.querySelectorAll('.field'))
 let button = document.getElementById('button');
 
 let handlers = {
+    draw : "it's a draw!",
     fieldsArray: [0,0,0,
                   0,0,0,
                   0,0,0],
@@ -27,7 +28,18 @@ let handlers = {
     },
 
     checkWhoWin: function(symbol) {
-        if (this.fieldsArray[0] === symbol && 
+        fieldsArrayCounter = 0;
+
+        for (let i = 0; i < this.fieldsArray.length; i++) {
+            if (this.fieldsArray[i] === 'circle' || this.fieldsArray[i] === 'cross') {
+                fieldsArrayCounter++;
+            }
+        }
+
+        if (fieldsArrayCounter === this.fieldsArray.length) {
+            this.createWinnersBoard(this.draw);
+        }
+        else if (this.fieldsArray[0] === symbol && 
             this.fieldsArray[1] === symbol && 
             this.fieldsArray[2] === symbol) {
             winnersBoardContainer.style.pointerEvents = 'all';
@@ -71,8 +83,12 @@ let handlers = {
     },
 
     createWinnersBoard: function(winner) {
+        winnersBoardContainer.style.pointerEvents = 'all';
         winnersBoardContainer.style.opacity = '1';
-        winnerText.innerHTML =  `${winner} wins!`;
+        console.log(winner);
+        if (winner === handlers.draw) {
+            winnerText.innerHTML =  `${handlers.draw}`;
+        } else {winnerText.innerHTML =  `${winner} wins!`;} 
     }
 }
 
