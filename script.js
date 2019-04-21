@@ -1,3 +1,6 @@
+let winnersBoardContainer = document.getElementById('winners-board-container');
+let winnerText = document.getElementById('winner-text');
+
 let handlers = {
     fieldsArray: [0,0,0,
                   0,0,0,
@@ -22,14 +25,56 @@ let handlers = {
     },
 
     checkWhoWin: function(symbol) {
-        if (true) {
+        if (this.fieldsArray[0] === symbol && 
+            this.fieldsArray[1] === symbol && 
+            this.fieldsArray[2] === symbol) {
+            winnersBoardContainer.style.pointerEvents = 'all';
             this.createWinnersBoard(symbol);
-        }   
+        } else if (this.fieldsArray[0] === symbol && 
+            this.fieldsArray[4] === symbol && 
+            this.fieldsArray[8] === symbol) {
+            winnersBoardContainer.style.pointerEvents = 'all';
+            this.createWinnersBoard(symbol)
+        } 
+        else if (this.fieldsArray[0] === symbol && 
+            this.fieldsArray[3] === symbol && 
+            this.fieldsArray[6] === symbol) {
+            winnersBoardContainer.style.pointerEvents = 'all';
+            this.createWinnersBoard(symbol)
+        } 
+        else if (this.fieldsArray[1] === symbol && 
+            this.fieldsArray[4] === symbol && 
+            this.fieldsArray[7] === symbol) {
+            winnersBoardContainer.style.pointerEvents = 'all';
+            this.createWinnersBoard(symbol)
+        } 
+        else if (this.fieldsArray[2] === symbol && 
+            this.fieldsArray[4] === symbol && 
+            this.fieldsArray[6] === symbol) {
+            winnersBoardContainer.style.pointerEvents = 'all';
+            this.createWinnersBoard(symbol)
+        } 
+        else if (this.fieldsArray[2] === symbol && 
+            this.fieldsArray[5] === symbol && 
+            this.fieldsArray[8] === symbol) {
+            winnersBoardContainer.style.pointerEvents = 'all';
+            this.createWinnersBoard(symbol)
+        } 
+        else if (this.fieldsArray[3] === symbol && 
+            this.fieldsArray[4] === symbol && 
+            this.fieldsArray[5] === symbol) {
+            winnersBoardContainer.style.pointerEvents = 'all';
+            this.createWinnersBoard(symbol)
+        } 
+        else if (this.fieldsArray[6] === symbol && 
+            this.fieldsArray[7] === symbol && 
+            this.fieldsArray[8] === symbol) {
+            winnersBoardContainer.style.pointerEvents = 'all';
+            this.createWinnersBoard(symbol)
+        } 
     },
 
     createWinnersBoard: function(winner) {
-        let winnersBoardContainer = document.getElementById('winners-board-container');
-        let winnerText = document.getElementById('winner-text');
         winnersBoardContainer.style.opacity = '1';
         winnerText.innerHTML =  `${winner} wins!`;
     }
@@ -43,6 +88,7 @@ fields.forEach(field => field.addEventListener('click', function(event) {
     if (field.firstChild === null) {
         if (lastSymbolUsed === 'cross') {
             field.appendChild(handlers.createCircleSymbol());
+            
             let index = fields.indexOf(field);
             handlers.addSymbolToArray(index, 'circle');
             lastSymbolUsed = 'circle';
@@ -52,6 +98,24 @@ fields.forEach(field => field.addEventListener('click', function(event) {
             let index = fields.indexOf(field);
             handlers.addSymbolToArray(index, 'cross');
             lastSymbolUsed = 'cross';
+            handlers.checkWhoWin(lastSymbolUsed);
         }
     }
 }));
+
+let button = document.getElementById('button');
+button.addEventListener('click', function() {
+    for (let i = 0; i < handlers.fieldsArray.length; i++) {
+        handlers.fieldsArray[i] = '0';
+    }
+
+    for (let i = 0; i < fields.length; i++) {
+        if (fields[i].hasChildNodes()) {
+            fields[i].removeChild(document.querySelector('img'));
+        }   
+    }
+    
+    winnersBoardContainer.style.pointerEvents = 'none';
+    winnersBoardContainer.style.opacity = '0';
+    winnerText.innerHTML =  '';
+});

@@ -68,7 +68,7 @@ body {
     justify-content: center;
     align-items: center;
 }
-.button {
+#button {
     display: block;
     font-size: 30px;
     margin: 30px;
