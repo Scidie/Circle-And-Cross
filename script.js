@@ -112,4 +112,5 @@ button.addEventListener('click', function() {
     winnersBoardContainer.style.pointerEvents = 'none';
     winnersBoardContainer.style.opacity = '0';
     winnerText.innerHTML =  '';
+    lastSymbolUsed = 'cross';
 });
