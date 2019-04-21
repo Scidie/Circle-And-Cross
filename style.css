@@ -34,7 +34,7 @@ body {
 }
 
 .cross-image {
-    width: 100px;
+    width: 75px;
 }
 
 .circle-image {
@@ -83,4 +83,37 @@ body {
 
 #button:active {
     transform: scale(1.03);
+}
+
+@media screen and (max-width: 450px) {
+	.field {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 25vw;
+        width: 25vw;
+        background:rgb(66, 63, 63);
+    }
+    
+    .cross-image {
+        width: 15vw;
+    }
+    
+    .circle-image {
+        width: 20vw;
+    }
+
+    #winner-text {
+        font-size: 40px;
+    }
+
+    .game-board {
+        grid-gap: 4px;
+    }
+
+    #button {
+        font-size: 18px;
+        margin: 22px;
+        padding: 6px;
+    }
 }
