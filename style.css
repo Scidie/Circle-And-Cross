@@ -78,4 +78,9 @@ body {
     font-family: 'Russo One', sans-serif;
     border: none;
     border-radius: 10px;
+    transition: .4s
+}
+
+#button:active {
+    transform: scale(1.03);
 }

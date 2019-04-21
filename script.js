@@ -83,7 +83,6 @@ fields.forEach(field => field.addEventListener('click', function(event) {
     if (field.firstChild === null) {
         if (lastSymbolUsed === 'cross') {
             field.appendChild(handlers.createCircleSymbol());
-            
             let index = fields.indexOf(field);
             handlers.addSymbolToArray(index, 'circle');
             lastSymbolUsed = 'circle';
@@ -111,6 +110,5 @@ button.addEventListener('click', function() {
 
     winnersBoardContainer.style.pointerEvents = 'none';
     winnersBoardContainer.style.opacity = '0';
-    winnerText.innerHTML =  '';
     lastSymbolUsed = 'cross';
 });
