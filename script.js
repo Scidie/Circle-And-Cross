@@ -35,10 +35,7 @@ let handlers = {
             }
         }
 
-        if (fieldsArrayCounter === this.fieldsArray.length) {
-            this.showWinnersBoard(this.draw);
-        }
-        else if (this.fieldsArray[0] === symbol && this.fieldsArray[1] === symbol && this.fieldsArray[2] === symbol) {
+        if (this.fieldsArray[0] === symbol && this.fieldsArray[1] === symbol && this.fieldsArray[2] === symbol) {
             winnersBoardContainer.style.pointerEvents = 'all';
             this.showWinnersBoard(symbol);
         } else if (this.fieldsArray[0] === symbol && this.fieldsArray[4] === symbol && this.fieldsArray[8] === symbol) {
@@ -62,7 +59,9 @@ let handlers = {
         } else if (this.fieldsArray[6] === symbol && this.fieldsArray[7] === symbol && this.fieldsArray[8] === symbol) {
             winnersBoardContainer.style.pointerEvents = 'all';
             this.showWinnersBoard(symbol)
-        } 
+        } else if (fieldsArrayCounter === this.fieldsArray.length) {
+            this.showWinnersBoard(this.draw);
+        }
     },
 
     showWinnersBoard: function(winner) {
